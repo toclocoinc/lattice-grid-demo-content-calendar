@@ -28,10 +28,6 @@ button.primary {
 .kpi { margin-bottom: 0.75rem; min-height: 60px; }
 
 .panel { height: 640px; border: 1px solid var(--line); border-radius: 6px; overflow: auto; }
-/* The kanban/calendar modules set `display` on their own root element via a
-   class rule, which otherwise beats the `[hidden]` user-agent rule's tied
-   specificity — so the toggle needs this to actually hide a panel. */
-.panel[hidden] { display: none !important; }
 
 .post-card { padding: 6px 8px; border-radius: 4px; font-size: 12px; overflow: hidden; }
 .post-card__head { display: flex; align-items: center; gap: 4px; font-weight: 600; }
