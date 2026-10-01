@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Content calendar demo — one feed, three viewers | Lattice Grid</title>
+    <meta
+      name="description"
+      content="A social content calendar: one Data Router feed of synthetic posts, shown as a grid, a kanban board and a FullCalendar-style week/month calendar, switchable with a table / board / calendar toggle. Built with Lattice Grid."
+    />
+    <link rel="icon" href="data:," />
+    <!--
+      The grid and its modules, from jsDelivr. Every address names the exact
+      release, 1.83.0, with the hash of the file it expects, so the page can
+      never quietly pick up a different build than the one it was checked
+      against.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.83.0/lattice-grid.min.css"
+      integrity="sha384-2i16nZVKwviR2MGSw17fvJB0ZmiPo8qKw3f/kl7qQbKdylO12J5aeY5AZiQxz5PF"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.83.0/lattice-grid.min.js"
+      integrity="sha384-wAHel+HUzFAk4WTZB+wpLOl4HIB3tQiIE0yCmBXaT4uFG5aE97NfW4Wj+qAksxI2"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.83.0/modules/data-router.min.js"
+      integrity="sha384-27njjob582DW/W8qxjT7ZLBz+b8g9N0DpderCz8KoF4//BrHhTvys2CNqsXBAWi1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.83.0/modules/kanban.min.js"
+      integrity="sha384-CQqgteDZjOqaTETnmJBysE+C1PYtGJvrsmNYHkBRUV8xaOz/LKoNjsHZFcxmhRMu"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.83.0/modules/calendar.min.js"
+      integrity="sha384-kros1p/CEAUFeIVVd82MuFrT3a4EMrKKekDv4g4HSzkUo7hjhblNoNA8Z1Q2IwZJ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.83.0/modules/kpi.min.js"
+      integrity="sha384-2ekA2zck3JStjKWqfkqx9QxMm++ntqzAuzkX20Y3Iiyi43+XimyfBh/4Yz4E5UUA"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Bound to toclocoinc.github.io; does nothing anywhere else. localhost never needs a key.
+      LatticeGrid.setLicence('LG1.eyJ2IjoxLCJwIjoibGF0dGljZS1ncmlkIiwidCI6IlRPQ0xPQ08gSW5jIC0gcHVibGljIGRlbW9zIiwiZSI6IjIwMzAtMDEtMDEiLCJkIjpbInRvY2xvY29pbmMuZ2l0aHViLmlvIl19.9De42ua3aCGpiMB6EVRP7Tv-upUlDI-0T07rlSPzvCrsqg8t4YJi7SRnStEpAg48uzmcG7il1fR_TfwkUE7iCA');
+    </script>
+  </head>
+  <body>
+    <header class="page-head">
+      <h1>Content calendar</h1>
+      <p class="lede">
+        ~200 synthetic social posts, one <code>createDataRouter</code> feed, three viewers: a grid,
+        a kanban board and a week/month calendar. Drag a scheduled post to another day and the grid
+        and the board update without a refresh.
+      </p>
+    </header>
+
+    <div class="toolbar">
+      <div class="toggle" role="group" aria-label="View">
+        <button type="button" data-view="table" aria-pressed="true">Table</button>
+        <button type="button" data-view="board" aria-pressed="false">Board</button>
+        <button type="button" data-view="calendar" aria-pressed="false">Calendar</button>
+      </div>
+      <div class="toggle" role="group" aria-label="Calendar range">
+        <button type="button" id="cal-week">Week</button>
+        <button type="button" id="cal-month">Month</button>
+      </div>
+      <button type="button" id="new-post" class="primary">A new post arrives</button>
+    </div>
+
+    <div id="kpi" class="kpi"></div>
+    <div id="grid" class="panel"></div>
+    <div id="board" class="panel" hidden></div>
+    <div id="calendar" class="panel" hidden></div>
+
+    <footer class="page-foot">
+      <p>
+        <a href="https://www.npmjs.com/package/@toclocoinc/lattice-grid">@toclocoinc/lattice-grid</a>
+        on npm &middot; <a href="https://github.com/toclocoinc/latticegrid">grid repository</a>
+        &middot; <a href="https://www.latticegrid.dev">latticegrid.dev</a>
+      </p>
+    </footer>
+
+    <script type="module" src="./app.js?v=20261001a-0001"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+:root {
+  --fg: var(--lattice-foreground, #14171a);
+  --muted: var(--lattice-foreground-muted, #5b6570);
+  --line: #dfe3e6;
+}
+body {
+  font: 14px system-ui, sans-serif;
+  margin: 1.25rem;
+  background: var(--lattice-background, #fff);
+  color: var(--fg);
+}
+.page-head h1 { font-size: 1.25rem; margin: 0 0 0.3rem; }
+.page-head .lede { margin: 0 0 1rem; color: var(--muted); max-width: 70ch; }
+
+.toolbar { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.toggle button {
+  font: inherit; border: none; background: #fff; padding: 0.35rem 0.8rem; cursor: pointer;
+  border-right: 1px solid var(--line);
+}
+.toggle button:last-child { border-right: none; }
+.toggle button[aria-pressed="true"] { background: #6366f1; color: #fff; }
+button.primary {
+  font: inherit; border: 1px solid #6366f1; background: #6366f1; color: #fff;
+  padding: 0.35rem 0.9rem; border-radius: 6px; cursor: pointer; margin-left: auto;
+}
+
+.kpi { margin-bottom: 0.75rem; min-height: 60px; }
+
+.panel { height: 640px; border: 1px solid var(--line); border-radius: 6px; overflow: auto; }
+/* The kanban/calendar modules set `display` on their own root element via a
+   class rule, which otherwise beats the `[hidden]` user-agent rule's tied
+   specificity — so the toggle needs this to actually hide a panel. */
+.panel[hidden] { display: none !important; }
+
+.post-card { padding: 6px 8px; border-radius: 4px; font-size: 12px; overflow: hidden; }
+.post-card__head { display: flex; align-items: center; gap: 4px; font-weight: 600; }
+.post-card__dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+.post-card__account { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.post-card__time { margin-left: auto; font-size: 10px; color: var(--muted); flex: none; }
+.post-card__text {
+  margin: 3px 0; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.post-card__image { width: 100%; border-radius: 3px; display: block; margin: 3px 0; }
+.post-card__status { font-size: 10px; font-weight: 600; }
+.post-card__metrics { font-size: 10px; color: var(--muted); margin-top: 2px; }
