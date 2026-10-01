@@ -4,8 +4,8 @@
 // render-card.js. Known defect to avoid (card 1604, fixed in 1.83.1): grid
 // 1.83.0 draws a multi-day span bar as a band above the month grid, so this
 // demo uses point events only (no endProperty) — see README.md.
-import { CHANNELS, POSTS, newPost } from './data.js?v=20261001a-0001';
-import { cardHtml } from './render-card.js?v=20261001a-0001';
+import { CHANNELS, POSTS, newPost } from './data.js?v=20261001c-0001';
+import { cardHtml } from './render-card.js?v=20261001c-0001';
 
 const { createGrid } = LatticeGrid;
 const { createDataRouter } = LatticeGridDataRouter;
