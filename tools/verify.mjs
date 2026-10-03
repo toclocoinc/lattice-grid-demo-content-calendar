@@ -7,7 +7,7 @@
  *
  * Fails (exit 1) unless every check holds:
  *   - the grid, data-router, kanban, calendar and kpi modules came from the
- *     pinned 1.86.3 release; no watermark; 0 console errors
+ *     pinned 1.86.4 release; no watermark; 0 console errors
  *   - the grid's row count equals the generated post count
  *   - the calendar's visible-week card count equals the posts scheduled in
  *     that window, recomputed independently from the page's own data
@@ -25,7 +25,7 @@ import { mkdir } from 'node:fs/promises';
 const CHROME = process.env.CHROME || '/usr/bin/google-chrome';
 const PUPPETEER = process.env.PUPPETEER
   || '/home/latticeprodmgr/.npm/_npx/8003d8991b0d346b/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js';
-const GRID_VERSION = '1.86.3';
+const GRID_VERSION = '1.86.4';
 const arg = (name) => { const i = process.argv.indexOf(name); return i > -1 ? process.argv[i + 1] : null; };
 const shots = arg('--shots');
 
@@ -82,8 +82,8 @@ try {
         calendar: typeof window.LatticeGridCalendar.createCalendar,
         kpi: typeof window.LatticeGridKPI.createKPI,
       },
-      pinnedScripts: scripts.filter((s) => s.includes('@1.86.3/')).length,
-      pinnedSheets: sheets.filter((s) => s.includes('@1.86.3/')).length,
+      pinnedScripts: scripts.filter((s) => s.includes('@1.86.4/')).length,
+      pinnedSheets: sheets.filter((s) => s.includes('@1.86.4/')).length,
       watermarks: document.querySelectorAll('.lat-watermark').length,
       moduleScripts: [...document.querySelectorAll('script[type="module"]')].length,
     };
@@ -91,8 +91,8 @@ try {
   numbers.version = delivery.version;
   check(delivery.version === GRID_VERSION, `LatticeGrid.version() is ${GRID_VERSION}`, delivery.version);
   check(Object.values(delivery.modules).every((t) => t === 'function'), 'every module left its global behind', JSON.stringify(delivery.modules));
-  check(delivery.pinnedScripts === 5, 'five library <script> tags are pinned to 1.86.3', String(delivery.pinnedScripts));
-  check(delivery.pinnedSheets === 1, 'the stylesheet is pinned to 1.86.3', String(delivery.pinnedSheets));
+  check(delivery.pinnedScripts === 5, 'five library <script> tags are pinned to 1.86.4', String(delivery.pinnedScripts));
+  check(delivery.pinnedSheets === 1, 'the stylesheet is pinned to 1.86.4', String(delivery.pinnedSheets));
   check(delivery.watermarks === 0, 'no watermark', String(delivery.watermarks));
   check(delivery.moduleScripts === 1, 'exactly one type="module" script (app.js); the library itself is classic script tags', String(delivery.moduleScripts));
 
